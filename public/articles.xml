@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Articles on j4pe </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://j4.pe/articles.xml</link>
+    
+    
+    
+    <updated>Fri, 01 Aug 2014 21:55:40 UTC</updated>
+    
+    <item>
+      <title>Notes Debian</title>
+      <link>http://j4.pe/articles/sample.html</link>
+      <pubDate>Fri, 01 Aug 2014 21:55:40 UTC</pubDate>
+      
+      <guid>http://j4.pe/articles/sample.html</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Haskell&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;sudo apt-get install libedit-dev libbsd-dev libgmp3-dev zlib1g-dev freeglut3-dev ghc libncurses5-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Interfaces&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;auto wlan0
+iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;sudo&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;ja  ALL = (ALL) NOPASSWD: ALL
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GPG &amp; Yubi</title>
+      <link>http://j4.pe/articles/gpg-yubi.html</link>
+      <pubDate>Fri, 01 Aug 2014 21:17:52 UTC</pubDate>
+      
+      <guid>http://j4.pe/articles/gpg-yubi.html</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;GPG&lt;/h1&gt;
+
+&lt;p&gt;Importation de la clef pub de &lt;strong&gt;m at j4.pe&lt;/strong&gt; : gpg &amp;ndash;recv-key 92B3B329&lt;/p&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Yubikey&lt;/h1&gt;
+
+&lt;h2 id=&#34;toc_2&#34;&gt;Installation Debian&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;apt-get install libccid libpcsclite1 pcscd scdaemon
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;toc_3&#34;&gt;Vérifier la carte GPG&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;gpg --card-status
+#END_SRC
+
+#+BEGIN_SRC sh
+Application ID ...: D2760001240102000000000000010000
+Version ..........: 2.0
+Manufacturer .....: test card
+Serial number ....: 00000001
+Name of cardholder: [non positionné]
+Language prefs ...: [non positionné]
+Sex ..............: non indiqué
+URL of public key : [non positionné]
+Login data .......: [non positionné]
+Signature PIN ....: forcé
+Key attributes ...: 2048R 2048R 2048R
+Max. PIN lengths .: 127 127 127
+PIN retry counter : 3 3 3
+Signature counter : 3
+Signature key ....: 9A90 7406 EA0F 850A BEE7  F97D 607D EADB ADE7 0183
+      created ....: 2014-02-25 16:49:12
+Encryption key....: E318 4880 F203 D6C7 FEF6  4845 9F3B 75C0 4CE6 4CA5
+      created ....: 2012-03-28 08:00:47
+Authentication key: F9EA 99DE B87F B819 5F07  37E5 5C39 18AE 5F82 0A59
+      created ....: 2014-02-25 16:49:35
+General key info..: pub  2048R/ADE70183 2014-02-25 Jean-Alexandre Peyroux &amp;lt;m at j4.pe&amp;gt;
+sec   2048R/92B3B329  créé : 2012-03-28  expire : jamais    
+ssb&amp;gt;  2048R/4CE64CA5  créé : 2012-03-28  expire : jamais    
+                      nº de carte : 0000 00000001
+ssb&amp;gt;  2048R/ADE70183  créé : 2014-02-25  expire : jamais    
+                      nº de carte : 0000 00000001
+ssb&amp;gt;  2048R/5F820A59  créé : 2014-02-25  expire : jamais    
+                      nº de carte : 0000 00000001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;toc_4&#34;&gt;.xsession&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;/etc/X11/Xsession i3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;toc_5&#34;&gt;Configuration GPG-agent &amp;amp; Xsession&lt;/h2&gt;
+
+&lt;p&gt;*/etc/X11/Xsession.d/90gpg-agent*&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;: ${GNUPGHOME=$HOME/.gnupg}
+
+GPGAGENT=/usr/bin/gpg-agent
+PID_FILE=&amp;quot;$GNUPGHOME/gpg-agent-info-$(hostname)&amp;quot;
+
+if grep -qs &#39;^[[:space:]]*use-agent&#39; &amp;quot;$GNUPGHOME/gpg.conf&amp;quot; &amp;quot;$GNUPGHOME/options&amp;quot; &amp;amp;&amp;amp;
+   test -x $GPGAGENT &amp;amp;&amp;amp;
+   { test -z &amp;quot;$GPG_AGENT_INFO&amp;quot; || ! $GPGAGENT 2&amp;gt;/dev/null; }; then
+
+   if [ -r &amp;quot;$PID_FILE&amp;quot; ]; then
+       . &amp;quot;$PID_FILE&amp;quot;
+   fi
+
+   # Invoking gpg-agent with no arguments exits successfully if the agent
+   # is already running as pointed by $GPG_AGENT_INFO
+   if ! $GPGAGENT 2&amp;gt;/dev/null; then
+       STARTUP=&amp;quot;$GPGAGENT --daemon --enable-ssh --sh --write-env-file=$PID_FILE $STARTUP&amp;quot;
+   fi
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;toc_6&#34;&gt;Yubikey &amp;amp; ssh&lt;/h2&gt;
+
+&lt;p&gt;Vérifier la clef pub&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;ssh-add -L
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;ssh-rsa AAAAB3Nza[...]8uCPDHnStGSiCgAOR9ZtonYB1CkFT5SFNY8ed
+cardno:000000000001
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Puis, copier cette clef pub dans le &lt;strong&gt;.ssh/authorized~keys~&lt;/strong&gt; des
+serveurs.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

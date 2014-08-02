@@ -3,7 +3,8 @@
 echo -e "\033[0;32mDeploying updates to Github...\033[0m"
 
 # Build the project.
-hugo
+#hugo
+hugo --uglyUrls=true -t hyde 
 
 # Add changes to git.
 git add -A

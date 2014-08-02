@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>System on j4pe </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://j4.pe/tags/system.xml</link>
+    
+    
+    
+    <updated>Fri, 01 Aug 2014 21:55:40 UTC</updated>
+    
+    <item>
+      <title>Notes Debian</title>
+      <link>http://j4.pe/articles/sample.html</link>
+      <pubDate>Fri, 01 Aug 2014 21:55:40 UTC</pubDate>
+      
+      <guid>http://j4.pe/articles/sample.html</guid>
+      <description>
+
+&lt;h1 id=&#34;toc_0&#34;&gt;Haskell&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;sudo apt-get install libedit-dev libbsd-dev libgmp3-dev zlib1g-dev freeglut3-dev ghc libncurses5-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_1&#34;&gt;Interfaces&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;auto wlan0
+iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;toc_2&#34;&gt;sudo&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;bash&#34;&gt;ja  ALL = (ALL) NOPASSWD: ALL
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
