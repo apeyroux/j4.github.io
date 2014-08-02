@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://j4.pe/</loc>
+    <lastmod>2014-08-01T21:55:40+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://j4.pe/articles/sample</loc>
+    <lastmod>2014-08-01T21:55:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://j4.pe/articles/gpg-yubi</loc>
+    <lastmod>2014-08-01T21:17:52+00:00</lastmod>
+  </url>
+  
+</urlset>
